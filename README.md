@@ -6,11 +6,11 @@ Setting up HTML page repo - v.basic!
 mkdir /repos/
 
 create repository on git hub
-	https://github.com/
-	Click start new project
-	Enter repo name: html_label
-	Check Initialize this repository with a README checkbox
-	Click create repository
+	https://github.com/  
+	Click start new project  
+	Enter repo name: html_label  
+	Check Initialize this repository with a README checkbox  
+	Click create repository  
 
 cd into /repos/
 
