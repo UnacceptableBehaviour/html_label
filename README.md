@@ -30,7 +30,8 @@ edit .gitignore
   
   Ctrl-O, Ctrl-X		# to save file
   
-# Git ignore syntax notes: https://git-scm.com/docs/gitignore
+#### Git ignore syntax notes:
+https://git-scm.com/docs/gitignore  
 
 Populate directory with html and supporting files
 
@@ -84,8 +85,11 @@ To https://github.com/UnacceptableBehaviour/html_label
   
   
 # Resources
-Good Crash Cour for Git
+#### Good Crash Course for Git  
 https://www.youtube.com/watch?v=SWYqp7iY_Tc&list=PL2lwdwuJBHeH27wyxgOfVvmuA5zyJ8BXT&index=1
-Markdown syntax (.md)
+
+#### Markdown syntax (.md)
 https://www.markdownguide.org/basic-syntax/
+
+
 
