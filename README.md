@@ -88,6 +88,9 @@ To https://github.com/UnacceptableBehaviour/html_label
 #### Good Crash Course for Git  
 https://www.youtube.com/watch?v=SWYqp7iY_Tc&list=PL2lwdwuJBHeH27wyxgOfVvmuA5zyJ8BXT&index=1
 
+#### Git ignore syntax notes:
+https://git-scm.com/docs/gitignore  
+
 #### Markdown syntax (.md)
 https://www.markdownguide.org/basic-syntax/
 
