@@ -49,7 +49,35 @@
         table, th, td {
             border: 1px solid black;
             text-align: center;
+            border-collapse: collapse;
+            <!-- see L0 1h25m24 for colour -->
+            
         }
+        
+        th, td {
+            padding: 3px
+        }
+        
+        .traffic_energy {
+            background-color: #FFFFFF;
+        }
+        
+        .traffic_fat {
+            background-color: #3CB938;
+        }
+        
+        .traffic_saturates {
+            background-color: #3CB938;
+        }
+        
+        .traffic_sugars {
+            background-color: #CB2B0B;
+        }
+        
+        .traffic_salt {
+            background-color: #FEA150;
+        }
+        
 
     </style>
 </head>
@@ -108,6 +136,13 @@
     <strong>best before:</strong> 25th Nov
     <strong>use by:</strong> 25th Nov
 </h4>
+<br>
+
+<form>
+    <input type="text" placeholder="Allergies?" name="allergies" >
+    <button>Submit!</button>
+</form> 
+
 
 <br>
 <h3>
@@ -177,31 +212,159 @@ salt                     0.26g<br>
     </tr>
     <tr>
         <td>Energy</td>
-        <td>Fat</td>
-        <td>Saturates</td>
-        <td>Sugars</td>
-        <td>Salt</td>
+        <td bgcolor="#3CB938">Fat</td>
+        <td bgcolor="#3CB938">Saturates</td>
+        <td bgcolor="#CB2B0B">Sugars</td>
+        <td bgcolor="#FEA150">Salt</td>
     </tr>
     <tr>
         <td>1046kJ<br>250kcal</td>
-        <td>3.0g</td>
-        <td>1.3g</td>
-        <td>34g</td>
-        <td>0.9g</td>
+        <td bgcolor="#3CB938">3.0g</td>
+        <td bgcolor="#3CB938">1.3g</td>
+        <td bgcolor="#CB2B0B">34g</td>
+        <td bgcolor="#FEA150">0.9g</td>
     </tr>
     <tr>
         <td></td>
-        <td>LOW</td>
-        <td>LOW</td>
-        <td>HIGH</td>
-        <td>MEDIUM</td>
+        <td bgcolor="#3CB938">LOW</td>
+        <td bgcolor="#3CB938">LOW</td>
+        <td bgcolor="#CB2B0B">HIGH</td>
+        <td bgcolor="#FEA150">MEDIUM</td>
     </tr>
     <tr>
         <td>13%</td>
-        <td>4%</td>
-        <td>7%</td>
-        <td>38%</td>
-        <td>15%</td>
+        <td bgcolor="#3CB938">4%</td>
+        <td bgcolor="#3CB938">7%</td>
+        <td bgcolor="#CB2B0B">38%</td>
+        <td bgcolor="#FEA150">15%</td>
+    </tr>
+</table>
+
+
+<br>
+<h3>
+HTML5 ?
+</h3>
+<table>
+  <tr>
+    <th bgcolor="#CB2B0B">RED</th>
+    <th bgcolor="#CB2B0B">-$1</th>
+  </tr>
+  <tr>
+    <td bgcolor="#FEA150">AMBER</td>
+    <td bgcolor="#FEA150">$150</td>
+  </tr>
+  <tr>
+    <td bgcolor="#3CB938">GREEN</td>
+    <td bgcolor="#3CB938">$1000</td>
+  </tr>  
+</table>
+
+
+<h3>
+    Html Version Traffic Lights - HTML5 / CSS 
+</h3>
+<table>
+    <tr>
+        <td colspan="5">Traffic Lights - Nutrition per 275g serving</td>
+    </tr>
+    <tr>
+        <td>Energy</td>
+        <td class="traffic_fat">Fat</td>
+        <td class="traffic_saturates">Saturates</td>
+        <td class="traffic_sugars">Sugars</td>
+        <td class="traffic_salt">Salt</td>
+    </tr>
+    <tr>
+        <td>1046kJ<br>250kcal</td>
+        <td class="traffic_fat">3.0g</td>
+        <td class="traffic_saturates">1.3g</td>
+        <td class="traffic_sugars">34g</td>
+        <td class="traffic_salt">0.9g</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td class="traffic_fat">LOW</td>
+        <td class="traffic_saturates">LOW</td>
+        <td class="traffic_sugars">HIGH</td>
+        <td class="traffic_salt">MEDIUM</td>
+    </tr>
+    <tr>
+        <td>13%</td>
+        <td class="traffic_fat">4%</td>
+        <td class="traffic_saturates">7%</td>
+        <td class="traffic_sugars">38%</td>
+        <td class="traffic_salt">15%</td>
+    </tr>
+</table>
+
+<br>
+<h3>
+    Html Version Nutrition Table
+</h3>
+<table>
+    <tr>
+        <td colspan="5">Nutrition table</td>
+    </tr>
+    <tr>
+        <td>Typical</td>
+        <td>per 100g</td>
+        <td>per Serving</td>
+        <td>%RDA</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Energy</td>
+        <td>1046kJ</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <!-- <td>Fat</td> occupied by rowspan --> 
+        <td>250kcal</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Fat</td>
+        <td>3.0g</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Saturates</td>
+        <td>1.3g</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Carbohydrate</td>
+        <td>35g</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Sugars</td>
+        <td>34g</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Fibre</td>
+        <td>5g</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Protein</td>
+        <td>5g</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Salt</td>
+        <td>0.9g</td>
+        <td></td>
+        <td></td>
     </tr>
 </table>
 
