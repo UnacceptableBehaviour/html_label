@@ -6,20 +6,22 @@
     
     <style>
                 
-        .burger_gallery {
+        .container {
             background-color: black;
-            display: grid;
-            padding: 5px;
-            grid-column-gap: 5px;
-            grid-row-gap: 10px;
-            grid-template-columns: auto auto auto;
-            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center
         }
         
-        .gallery_image {
+        .container > div {
             background-color: black;
-            margin: 5px;
-            padding:  2px;
+            font-size: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: auto;
+            margin-top: auto;
+            padding:  3px;
+            width:  280;
             align-content: center;
         }
 
@@ -29,7 +31,7 @@
 
 <body>
     
-<div class="burger_gallery">    
+<div class="container">    
     <div class="gallery_image">     <image src="burgers/784 pork & beef chorizo on brioche.jpg"> </div>
     <div class="gallery_image">     <image src="burgers/864 chicken & cous cous burger.jpg"> </div>
     <div class="gallery_image">     <image src="burgers/BLT quarter pounder w blue cheese on white bap.jpg"> </div>
