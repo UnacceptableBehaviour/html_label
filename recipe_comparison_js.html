@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<script>
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  
+  /*loop through a collection of all HTML elements:*/
+  z = document.getElementsByTagName("*");
+  
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+  
+    file = elmnt.getAttribute("w3-include-html");
+  
+    if (file) {
+      /*make an HTTP request using the attribute value as the file name:*/
+      xhttp = new XMLHttpRequest();
+  
+      xhttp.onreadystatechange = function() {
+        
+        if (this.readyState == 4) {
+  
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+  
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+  
+          /*remove the attribute, and call this function once more:*/
+          elmnt.removeAttribute("w3-include-html");
+  
+          includeHTML();
+  
+        }
+      }      
+  
+      xhttp.open("GET", file, true);
+  
+      xhttp.send();
+  
+      /*exit the function:*/
+      return;
+    }
+  }
+};
+</script>
+
+<body>
+
+<table>
+  <tr>
+    <td><div w3-include-html="http://192.168.0.8:8000/recipe_page.html"></div></td>
+    <td><div w3-include-html="http://192.168.0.8:8000/recipe_page.html"></div></td>
+  </tr>
+
+  <tr>
+    <td>Prawn</td>
+    <td>Crab</td>
+    <!--<td><div w3-include-html='recipe_page.html'></div></td> <!-- works in seamonkey 2.49.1 NOT chrome -->
+    <!--<td><div w3-include-html='recipe_page.html'></div></td> <!-- works in seamonkey 2.49.1 NOT chrome -->
+  </tr>
+    
+  <tr>
+    <td><div w3-include-html="http://localhost:8000/recipe_page.html"></div></td>
+    <td><div w3-include-html="http://localhost:8000/recipe_page.html"></div></td>
+  </tr>
+  <!-- https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally -->
+  <!-- cd into directory to be served -->
+  <!-- and start a web server -->  
+  <!-- ruby -r webrick -e "s = WEBrick::HTTPServer.new(:Port => 8000, :DocumentRoot => Dir.pwd); trap('INT') { s.shutdown }; s.start" -->
+  <!-- or python3 -m http.server -->
+  <!-- then files will be served from -->
+  <!-- http://127.0.0.1:8000/recipe_page.html  <!-- run
+  <!-- http://localhost:8000/recipe_page.html  <!-- run
+  
+  <!-- -->
+  <!-- -->
+  <!-- -->
+  <!--<td><div w3-include-html="http://localhost:9000/recipe_page.html"></div></td>-->
+</table>
+
+
+
+<script>
+
+  includeHTML();
+
+</script>
+
+</body>
+</html>
