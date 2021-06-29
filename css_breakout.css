@@ -41,14 +41,27 @@ p {
     padding: 1px 1px 1px 5px;
 }
 
+
+
 table, th, td {
     border: 1px solid black;
-    text-align: center;
+    // text-align: center;
     border-collapse: collapse;
 }
 
 th, td {
     padding: 3px
+}
+
+.nut_cat_macro {
+    text-align: left;
+    font-weight: bold;
+}
+
+.nut_sub_cat_macro {
+    position: relative;
+    left: 14px;
+    font-weight: normal;
 }
 
 .traffic_energy {
