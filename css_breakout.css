@@ -53,12 +53,12 @@ th, td {
     padding: 3px
 }
 
-.nut_cat_macro {
+.nut_macro_cat {
     text-align: left;
     font-weight: bold;
 }
 
-.nut_sub_cat_macro {
+.nut_macro_sub_cat {
     position: relative;
     left: 14px;
     font-weight: normal;
