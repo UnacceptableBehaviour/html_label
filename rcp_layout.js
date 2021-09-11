@@ -1,0 +1,58 @@
+var dtk_recipe_object = {'allergens': ['seeds_mustard', 'seeds_sesame', 'eggs', 'fish'],
+  'atomic': 0,
+  'components': {},
+  'description': 'this fabulously tasty little number is suitable for both carnivores and vegans alike, packed with flavour and protein! Drawbacks . . none_listed',
+  'dt_date': 1627554890432,
+  'dt_date_readable': '2021 07 29',
+  'dt_day': 'thu',
+  'dt_last_update': 0,
+  'dt_rollover': 1627621250432,
+  'dt_time': '1034',
+  'id': 502,
+  'ingredients': [['1', '2g', '(0)', 'nori'],
+                  ['1', '4g', '(0)', 'chives'],
+                  ['1', '188g', '(0)', 'c&s sushi rice'],
+                  ['1', '150g', '(0)', 'salmon'],
+                  ['1', '25g', '(0)', 'wasabi mayo'],
+                  ['1', '5g', '(0)', 'lemon juice']],
+  'lead_image': '20200307_163118_ssr salmon & wasabineizu.jpg',
+  'method': {},
+  'nutrinfo': {'density': 1,
+               'n_Al': 0.0,
+               'n_Ca': 14.35,
+               'n_En': 155.0,
+               'n_Fa': 5.94,
+               'n_Fb': 0.7,
+               'n_Fm': 0.86,
+               'n_Fo3': 0.0,
+               'n_Fp': 0.78,
+               'n_Fs': 0.86,
+               'n_Pr': 10.79,
+               'n_Sa': 0.59,
+               'n_St': 10.37,
+               'n_Su': 2.29,
+               'serving_size': 15.0,
+               'servings': 24.0,
+               'units': 'g',
+               'yield': 374.0},
+  'ri_id': 50201,
+  'ri_name': 'ssr salmon & wasabineizu',
+  'tags': ['fish'],
+  'text_file': '20200307_163118_ssr salmon & wasabineizu.txt',
+  'user_rating': 1,
+  'user_tags': ['none_listed'],
+  'username': 'carter'};
+
+
+var dtk = {"dtk_pc_fat": 0.0,
+           "dtk_pc_h2o": 0.0,
+           "dtk_rcp": dtk_recipe_object,
+           "dtk_user_info": {"UUID": "014752da-b49d-4fb0-9f50-23bc90e44298",
+                             "name": "Aardvark"},
+           "dtk_weight": 0.0};
+    // move this into nav_bar? above dtk_store.js
+    //console.log(`weight_in_t.html JS dtk ${dtk['dtk_rcp']['ri_name']} - inline`);  // sanity check
+    //console.log(dtk);  // sanity check
+    //console.log(`weight_in_t.html - inline CONCLUDED`);  // sanity check
+
+console.log(dtk);
