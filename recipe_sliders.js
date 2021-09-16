@@ -13,6 +13,10 @@ window.addEventListener('load',function(){
       console.log('Loaded')
   });
 
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   window._ = new Glider(document.querySelector('.glider'), {
       slidesToShow: 1, //'auto',
       slidesToScroll: 1,
@@ -64,6 +68,10 @@ window.addEventListener('load',function(){
       ]
   });
 
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   window._ = new Glider(document.querySelector('.glider-2'), {
       slidesToShow: 1, //'auto',
       slidesToScroll: 1,
@@ -115,6 +123,9 @@ window.addEventListener('load',function(){
       ]
   });
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   window._ = new Glider(document.querySelector('.glider-3'), {
       slidesToShow: 1, //'auto',
       slidesToScroll: 1,
@@ -165,5 +176,222 @@ window.addEventListener('load',function(){
           }
       ]
   });
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  window._ = new Glider(document.querySelector('.glider-4'), {
+      slidesToShow: 1, //'auto',
+      slidesToScroll: 1,
+      itemWidth: 150,
+      draggable: true,
+      scrollLock: false,
+      dots: '#dots',
+      rewind: true,
+      arrows: {
+          prev: '.glider-prev',
+          next: '.glider-next'
+      },
+      responsive: [
+          {
+              breakpoint: 800,
+              settings: {
+                  slidesToScroll: 'auto',
+                  itemWidth: 300,
+                  slidesToShow: 'auto',
+                  exactWidth: true
+              }
+          },
+          {
+              breakpoint: 700,
+              settings: {
+                  slidesToScroll: 4,
+                  slidesToShow: 4,
+                  dots: false,
+                  arrows: false,
+              }
+          },
+          {
+              breakpoint: 600,
+              settings: {
+                  slidesToScroll: 3,
+                  slidesToShow: 3
+              }
+          },
+          {
+              breakpoint: 500,
+              settings: {
+                  slidesToScroll: 2,
+                  slidesToShow: 2,
+                  dots: false,
+                  arrows: false,
+                  scrollLock: true
+              }
+          }
+      ]
+  });
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  window._ = new Glider(document.querySelector('.glider-5'), {
+      slidesToShow: 1, //'auto',
+      slidesToScroll: 1,
+      itemWidth: 150,
+      draggable: true,
+      scrollLock: false,
+      dots: '#dots',
+      rewind: true,
+      arrows: {
+          prev: '.glider-prev',
+          next: '.glider-next'
+      },
+      responsive: [
+          {
+              breakpoint: 800,
+              settings: {
+                  slidesToScroll: 'auto',
+                  itemWidth: 300,
+                  slidesToShow: 'auto',
+                  exactWidth: true
+              }
+          },
+          {
+              breakpoint: 700,
+              settings: {
+                  slidesToScroll: 4,
+                  slidesToShow: 4,
+                  dots: false,
+                  arrows: false,
+              }
+          },
+          {
+              breakpoint: 600,
+              settings: {
+                  slidesToScroll: 3,
+                  slidesToShow: 3
+              }
+          },
+          {
+              breakpoint: 500,
+              settings: {
+                  slidesToScroll: 2,
+                  slidesToShow: 2,
+                  dots: false,
+                  arrows: false,
+                  scrollLock: true
+              }
+          }
+      ]
+  });
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  window._ = new Glider(document.querySelector('.glider-6'), {
+      slidesToShow: 1, //'auto',
+      slidesToScroll: 1,
+      itemWidth: 150,
+      draggable: true,
+      scrollLock: false,
+      dots: '#dots',
+      rewind: true,
+      arrows: {
+          prev: '.glider-prev',
+          next: '.glider-next'
+      },
+      responsive: [
+          {
+              breakpoint: 800,
+              settings: {
+                  slidesToScroll: 'auto',
+                  itemWidth: 300,
+                  slidesToShow: 'auto',
+                  exactWidth: true
+              }
+          },
+          {
+              breakpoint: 700,
+              settings: {
+                  slidesToScroll: 4,
+                  slidesToShow: 4,
+                  dots: false,
+                  arrows: false,
+              }
+          },
+          {
+              breakpoint: 600,
+              settings: {
+                  slidesToScroll: 3,
+                  slidesToShow: 3
+              }
+          },
+          {
+              breakpoint: 500,
+              settings: {
+                  slidesToScroll: 2,
+                  slidesToShow: 2,
+                  dots: false,
+                  arrows: false,
+                  scrollLock: true
+              }
+          }
+      ]
+  });
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  window._ = new Glider(document.querySelector('.glider-7'), {
+      slidesToShow: 1, //'auto',
+      slidesToScroll: 1,
+      itemWidth: 150,
+      draggable: true,
+      scrollLock: false,
+      dots: '#dots',
+      rewind: true,
+      arrows: {
+          prev: '.glider-prev',
+          next: '.glider-next'
+      },
+      responsive: [
+          {
+              breakpoint: 800,
+              settings: {
+                  slidesToScroll: 'auto',
+                  itemWidth: 300,
+                  slidesToShow: 'auto',
+                  exactWidth: true
+              }
+          },
+          {
+              breakpoint: 700,
+              settings: {
+                  slidesToScroll: 4,
+                  slidesToShow: 4,
+                  dots: false,
+                  arrows: false,
+              }
+          },
+          {
+              breakpoint: 600,
+              settings: {
+                  slidesToScroll: 3,
+                  slidesToShow: 3
+              }
+          },
+          {
+              breakpoint: 500,
+              settings: {
+                  slidesToScroll: 2,
+                  slidesToShow: 2,
+                  dots: false,
+                  arrows: false,
+                  scrollLock: true
+              }
+          }
+      ]
+  });
+
 
 });
