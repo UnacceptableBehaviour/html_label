@@ -74,7 +74,7 @@ p {
 /* - - - - - - - - - - - - glider - - - - - - - - - - - - */
 
 .glider-contain {
-    width: 110%;
+    width: 96%;
     max-width: 997px;
     margin: 0 auto;
 }
@@ -83,4 +83,40 @@ p {
 }
 .glider-slide img {
     width: 100%;
+    /*vertical-align: middle; why no work?*/
+}
+
+/* div containing whole slider in glider-2 */
+.glider-2 > div {
+    border: 1px solid pink;
+}
+/* div containing images in glider-2 */
+.glider-2 > div > div {
+    border: 1px solid black;
+/*    position: relative;  just pushes all element up 50% doesn't centre
+    top: 50%;
+    transform: perspective(1px) translateY(-50%);*/
+    vertical-align: middle;
+}
+
+
+
+
+/* div containing images in glider-6 sroll instruction cards */
+/* card style - black border - 10pcx radius - image radius TLRHC - bottom flat */
+/* note slightly different border raiun on border & image - stop white gap */
+.glider-6 > div > div {
+    margin: 1px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.glider-6 > div > div > img { /* #make_sroll > div.glider-6.glider.draggable > div > div:nth-child(3) > img */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+/* text parent #make_sroll > div.glider-6.glider.draggable > div > div:nth-child(3) */
+.glider-6 > div > div > p {
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 3px;
 }
