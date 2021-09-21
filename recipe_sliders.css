@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 body {
     background-color: black;
     color: lightgrey;
@@ -79,12 +81,50 @@ p {
     margin: 0 auto;
 }
 .glider-slide {
-    min-height: 150px;
+    min-height: 100px;
 }
 .glider-slide img {
     width: 100%;
     /*vertical-align: middle; why no work?*/
 }
+
+
+/* - - - - - - - - - - - - recipe cards - - - - - - - - - - - - */
+
+
+figure {
+    position: relative;
+    margin: 3px;
+    /*border: 1px solid pink;*/
+    font-family: 'Playfair Display', serif;
+    background: #FCF7ED;
+}
+figure > blockquote {
+    /*border: 1px solid green;*/
+    margin: 0.25em;
+    margin-top: 0.5em;
+    padding: 0.25em;
+    font-size: 0.75em;
+    font-style: italic;
+    color: black;
+    text-align: center;
+}
+figure > figcaption {
+    /*border: 1px solid yellow;*/
+    margin: 0.25em;
+    padding: 0.25em;
+    /*padding-right: 1em;*/
+    /*margin-bottom: 1em;*/
+    font-size: 0.6em;
+    color: black;
+    /*font-style: italic;*/
+    /*text-align: right;*/
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 0.6em;
+    right: 0.6em;
+}
+
 
 /* div containing whole slider in glider-2 */
 .glider-2 > div {
@@ -99,8 +139,8 @@ p {
     vertical-align: middle;
 }
 
-/* add a large number - white w/ black outline - possible? - over image*/
-.glider-3 > div > div {
+/* add a large number - white w/ black outline - over image*/
+#bread-g > div > div {
     margin: 1px;
     border: 1px solid grey;
     /*border-radius: 10px;*/
@@ -108,7 +148,7 @@ p {
     text-align: center;
     color: white;
 }
-.glider-3 > div > div > .top-rated-g3 {
+#bread-g > div > div > .top-rated-g3 {
     position: absolute;
     border: 1px solid purple;
     font-size: 8em;
@@ -151,17 +191,17 @@ p {
 /* div containing images in glider-6 sroll instruction cards */
 /* card style - black border - 10pcx radius - image radius TLRHC - bottom flat */
 /* note slightly different border radius on border & image - stop white gap */
-.glider-6 > div > div {
+#make_sroll-g > div > div {
     margin: 1px;
     border: 1px solid grey;
     border-radius: 10px;
 }
-.glider-6 > div > div > img { /* #make_sroll > div.glider-6.glider.draggable > div > div:nth-child(3) > img */
+#make_sroll-g > div > div > img { /* #make_sroll > div#make_sroll-g.glider.draggable > div > div:nth-child(3) > img */
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
-/* text parent #make_sroll > div.glider-6.glider.draggable > div > div:nth-child(3) */
-.glider-6 > div > div > p {
+/* text parent #make_sroll > div#make_sroll-g.glider.draggable > div > div:nth-child(3) */
+#make_sroll-g > div > div > p {
     font-size: 12px;
     color: white;
     padding-left: 5px;
@@ -171,7 +211,7 @@ p {
 
 /* movies top rated glider images SB 250 * 370 px */
 /* add a large number - white w/ black outline - possible?YES - over image*/
-.glider-8 > div > div {
+#movies-g > div > div {
     margin: 2px;
     /*border: 1px solid grey;*/
     /*border-radius: 10px;*/
@@ -179,12 +219,12 @@ p {
     text-align: center;
     color: white;
 }
-.glider-8 > div > div > img {
+#movies-g > div > div > img {
     margin: 1px;
     /*border: 1px solid grey;*/
     border-radius: 6px;
 }
-.glider-8 > div > div > .top-rated-mv {
+#movies-g > div > div > .top-rated-mv {
     position: absolute;
     /*border: 1px solid purple;*/
     font-size: 10em;
@@ -198,7 +238,49 @@ p {
   }
 }
 
+
+#movies-g2 > div > div {
+    margin: 2px;
+    /*border: 1px solid grey;*/
+    /*border-radius: 10px;*/
+    position: relative;
+    /*text-align: center;*/
+    color: white;
+}
+#movies-g2 > div > div > img {
+    margin: 1px;
+    /*border: 1px solid grey;*/
+    border-radius: 6px;
+    /*margin-left: 20px*/
+}
+#movies-g2 > div > div > .top-rated-mv {
+    position: absolute;
+    /*border: 1px solid purple;*/
+    font-size: 10em;
+    /*padding-right: 5px;*/
+    /*padding-top: 125px;*/
+    left: -0.15em;
+    bottom: -0.1em;
+    background: linear-gradient(to left,
+     rgba(255,255,255, 1) 20%,
+     rgba(255,255,255, 0) 80%
+    );
+/*    background: -webkit-linear-gradient(#000, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;*/
+}
+/* add outline to text / rank no  */
+@supports (-webkit-text-stroke: 1px black) {
+  .top-rated-mv {
+    -webkit-text-stroke: 2px grey;
+    -webkit-text-fill-color: black;
+  }
+}
+/* fade nuber out before previous tile */
+/* https://stackoverflow.com/questions/14500159/how-to-apply-a-css-gradient-over-a-text-from-a-transparent-to-an-opaque-colour */
+/* https://stackoverflow.com/questions/15597167/css3-opacity-gradient */
+
+
 #footer {
     height: 200px;
 }
-
