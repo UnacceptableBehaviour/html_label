@@ -400,9 +400,10 @@ window.addEventListener('load',function(){
   window._ = new Glider(document.querySelector('.glider-8'), {
       slidesToShow: 1, //'auto',
       slidesToScroll: 1,
-      itemWidth: 150,
+      itemWidth: 50,
       draggable: true,
-      scrollLock: false,
+      dragVelocity: 3.3,     // default 3.3
+      scrollLock: false,   // set to false to turn off snap to movie
       dots: '#dots',
       rewind: true,
       arrows: {
