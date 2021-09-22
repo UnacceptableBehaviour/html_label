@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@200&display=swap');
 
 body {
     background-color: black;
@@ -91,6 +92,30 @@ p {
 
 /* - - - - - - - - - - - - recipe cards - - - - - - - - - - - - */
 
+.slider-title {
+    font-family: 'Catamaran', sans-serif;
+    font-size: 1.5em;
+    border: 1px solid yellowgreen;
+    padding-left: 0.2em;
+    margin-top: 0.4em;
+}
+
+/* get image to fit and all be same size */
+.fit-box img {
+    width: 100%;
+    height: 100%;
+}
+/* fill options */
+.opt-1 img{
+    object-fit: cover;
+}
+.opt-2 img{
+    object-fit: contain;
+}
+.opt-3 img{
+    object-fit: fill;
+}
+
 
 figure {
     position: relative;
@@ -165,6 +190,9 @@ figure > figcaption {
     -webkit-text-fill-color: white;
   }
 }
+
+
+
     /* Bottom left text
       position: absolute;
       bottom: 8px;
