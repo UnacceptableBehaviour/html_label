@@ -294,8 +294,8 @@ figure > figcaption {
     left: -0.15em;
     bottom: -0.1em;
     background: linear-gradient(to left,
-     rgba(255,255,255, 1) 20%,
-     rgba(255,255,255, 0) 80%
+     rgba(0,0,0, 1) 5%,
+     rgba(0,0,0, 0) 95%
     );
 /*    background: -webkit-linear-gradient(#000, #fff);
     -webkit-background-clip: text;
