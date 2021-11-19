@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@200&display=swap');
+
+body {
+    /*background-color: black;*/
+    /*color: lightgrey;*/
+    text-align: left;
+    font-family: arial;
+    font-size: 14px;
+    margin: 0px;
+    border: 1px;
+    padding: 1px 1px 1px 5px;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0px;
+    border: 1px;
+    padding: 15px 1px 1px 5px;
+}
+/* rename h3 for page elements */
+h3 {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0px;
+    border: 1px;
+    padding: 15px 1px 1px 5px;
+}
+/*
+h4 {
+    font-weight: normal;
+    font-size: 12px;
+    margin: 0px;
+    border: 1px;
+    padding: 1px 1px 1px 5px;
+}
+
+p {
+    font-size: 10px;
+    font-style: italic;
+    margin: 0px;
+    border: 1px;
+    padding: 1px 1px 1px 5px;
+}
+*/
+
+/*  - - - - - recipe proper - - - - - */
+.rcp-card-txt {
+    margin-left: 10px;
+    margin-right: 10px;  
+}
+
+.rcp-image {
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+}
+
+.rcp-igds-list{
+    
+}
+
+.l-just {
+    text-align:left;
+}
+.r-just {
+    text-align:right;    
+}
+
+.rcp-igds {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0px;
+    border: 1px;
+    padding: 15px 1px 1px 1px;
+}
+.rcp-tab-igds { 
+    width: 100%;
+}
+.rcp-tab-igds img {
+    width: 80%;
+    height 80%;
+}
+
+
+.rcp-title, .rcp-desc, .rcp-igds, .rcp-makes, .rcp-method {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0px;
+    border: 1px;
+    padding: 15px 1px 1px 1px;
+}
+
+.rcp-steps {
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0px;
+    border: 1px;
+    padding: 1px 1px 1px 1px;
+    width: 100%;
+}
+
+/* - - - - - table general - - - - - */
+
+
+/* - - - - - traffic lights - - - - - */
+
+
+
+/* - - - - - nutrition table - - - - - */
+/*table.nutrinfo, table.nutrinfo th.nutrinfo, td.nutrinfo {*/
+table.nutrinfo tr, table.nutrinfo td {
+    border: 1px solid black;
+    text-align: left;
+    border-collapse: collapse;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.nut_macro_cat {
+    text-align: left;
+    font-weight: bold;
+}
+
+.nut_macro_sub_cat {
+    position: relative;
+    left: 14px;
+    font-weight: normal;
+}
+
+/* set first colum width to accomodatet the offset */
+table.nutrinfo td:nth-child(1) {  
+    width: 134px;
+}
+
+

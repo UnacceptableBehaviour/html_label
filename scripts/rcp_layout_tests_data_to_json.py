@@ -96,7 +96,7 @@ rcp_single = {'allergens': ['celery', 'molluscs', 'dairy'],
            'low_cal',
            'serve_rt',
            'serve_warm'],
-  'user_rating': 1,
+  'user_rating': 5,
   'user_tags': ['none_listed'],
   'username': 'carter'}
 

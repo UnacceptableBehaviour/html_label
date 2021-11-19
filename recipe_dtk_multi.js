@@ -1,4 +1,6 @@
 
+// r  recipe
+// rc recipeCard
 
 var rcp_single = {"allergens": ["celery", "molluscs", "dairy"], "atomic": false, "components": {}, "description": "squid stuffed w/ chicken spinach pine nuts & cheese topped w/ orange pepper and served with a lemon stock", "dt_date": 1637236261614, "dt_date_readable": "2021 11 18", "dt_day": "thu", "dt_last_update": 0, "dt_rollover": 1637298001614, "dt_time": "1151", "id": 992, "ingredients": [["1", "180g", "(0)", "chicken dark meat"], ["1", "200g", "(0)", "onion"], ["1", "60g", "(0)", "mushrooms"], ["1", "100g", "(0)", "spinach"], ["1", "16g", "(0)", "pine nuts"], ["2", "20g", "(0)", "extra mature cheddar"], ["1", "20g", "(0)", "lemon juice"], ["1", "2g", "(0)", "lemon zest"], ["1", "320g", "(4)", "small squid tubes"], ["1", "40g", "(0)", "red pepper"], ["1", "20g", "(0)", "olive oil"], ["2", "10g", "(0)", "chicken stock cube"], ["1", "200g", "(0)", "water"], ["1", "20g", "(0)", "lemon juice"], ["1", "20g", "(0)", "olive oil"], ["1", "2g", "(0)", "salt"]], "lead_image": "20190516_162549_squid stuffed w chicken and spinach.jpg", "method": "Cook the chicken thigh in a pan until just cooked through then debone & dice it.\nCook the onions until starting to turn brown and add them to the diced chicken.\nDice the mushrooms and cook until golden and add them to the diced chicken.\nAdd the pine nuts to the pan and cook until golden brown. tip: Keep them moving or cook in butter!\nWilt the spinach and drain off excess liquid add them to the diced chicken.\nFinally add the grated cheese & pine nuts and mix into a stuffing mix and the juice and zest of half a lemon and mix well.\nRemove the quill from the squid tubes if present and fill with stuffing.\nPlace in a small baking dish side by side with a slice of lemon between each one\nMix the rest of the ingredients except the pepper into a stock and pour over the squid.\nLay a strip of pepper on each squid and bake in a preheated oven 180C /15m", "notes": "The stuffing comes out a bit and mixes w/ the stock making a great sauce\nMum made this - so so good - a whole pepper going in 20mins before then add the squid for 15m\nThe centre is cooked and going into a hot tray will cook the squid enough in 15m I reckon\nNext time: Use whole red pepper (1 inch dice) and roast for 180C / 35 minutes then add squid\n180C / probe 70C (between filling and squid)", "nutrinfo": {"density": 1, "n_Al": 0.0, "n_Ca": 9.28, "n_En": 265.0, "n_Fa": 15.85, "n_Fb": 1.68, "n_Fm": 7.61, "n_Fo3": 4.58, "n_Fp": 2.87, "n_Fs": 3.35, "n_Pr": 21.69, "n_Sa": 1.61, "n_St": 0.05, "n_Su": 2.89, "serving_size": 115.0, "servings": 4.0, "units": "g", "yield": 460.0}, "ri_id": 99201, "ri_name": "squid stuffed w chicken and spinach", "tags": ["chicken", "shellfish"], "text_file": "20190516_162549_squid stuffed w chicken and spinach.txt", "type": ["snack", "brunch", "component", "amuse", "side", "starter", "sushi", "fish", "lightcourse", "main", "comfort", "low_cal", "serve_rt", "serve_warm"], "user_rating": 1, "user_tags": ["none_listed"], "username": "carter"};
 var rcp_guinea_dinner = {"allergens": ["dairy", "celery", "gluten"], "atomic": false, "components": {}, "description": "guinea fowl tagine w couscous & salad", "dt_date": 1637238811912, "dt_date_readable": "2021 11 18", "dt_day": "thu", "dt_last_update": 0, "dt_rollover": 1637298031912, "dt_time": "1233", "id": 513, "ingredients": [["0", "180g", "(0)", "guinea fowl tagine"], ["0", "100g", "(0)", "couscous chermoula"], ["0", "200g", "(0)", "green leaf & orange beet"]], "lead_image": "20200528_163128_guinea fowl tagine w couscous & salad.jpg", "method": "", "notes": "", "nutrinfo": {"density": 1, "n_Al": 0.0, "n_Ca": 14.11, "n_En": 118.0, "n_Fa": 4.27, "n_Fb": 1.63, "n_Fm": 2.31, "n_Fo3": 0.24, "n_Fp": 0.67, "n_Fs": 0.85, "n_Pr": 5.85, "n_Sa": 0.49, "n_St": 0.58, "n_Su": 7.32, "serving_size": 480.0, "servings": 1.0, "units": "g", "yield": 480.0}, "ri_id": 51301, "ri_name": "guinea fowl tagine w couscous & salad", "tags": ["veggie"], "text_file": "20200528_163128_guinea fowl tagine w couscous & salad.txt", "type": ["salad", "main", "comfort", "low_cal", "serve_rt", "serve_warm"], "user_rating": 1, "user_tags": ["none_listed"], "username": "carter"};
@@ -9,3 +11,28 @@ var rcp_salad = {"allergens": ["none_listed"], "atomic": false, "components": {}
 
 
 var rcps = [rcp_single,rcp_guinea_dinner,rcp_roast_bird,rcp_cherm,rcp_cc,rcp_salad];
+
+
+
+function createImage(rc, r) {
+  let rcpImg = document.createElement('img');
+  rcpImg.classList.add('rcp-image');
+  rcpImg.src = `images/${r.lead_image}`;
+  
+  rc.appendChild(rcpImg);
+}
+
+function createRecipeCard(r) {
+  let recipeCard = document.createElement('div');
+  recipeCard.classList.add('rcp-card');
+  
+  createImage(recipeCard, r);
+
+  return recipeCard;
+}
+
+var rc = createRecipeCard(rcp_guinea_dinner);
+
+
+
+window.addEventListener('load', f => {document.body.appendChild(rc);});
