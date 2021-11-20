@@ -46,6 +46,11 @@ p {
 */
 
 /*  - - - - - recipe proper - - - - - */
+hr {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
 .rcp-card-txt {
     margin-left: 10px;
     margin-right: 10px;  
@@ -91,17 +96,20 @@ p {
     height 80%;
 }
 
-
-.rcp-title, .rcp-desc, .rcp-igds, .rcp-makes, .rcp-method, .rcp-steps {
+/* - - - - - headings - - - - - */
+.rcp-title, .rcp-desc, .rcp-igds, .rcp-makes, .rcp-method, .rcp-method-title, .rcp-steps {
     font-weight: bold;
     font-size: 14px;
     margin: 0px;
     border: 1px;
     padding: 15px 1px 1px 1px;   
 }
-
+/* - - - - - specialisations of above */
 .rcp-desc {
     text-align:center;
+}
+.rcp-method-title {
+    padding: 1px 1px 1px 1px;    
 }
 .rcp-steps {
     font-weight: normal;
@@ -112,19 +120,30 @@ p {
 
 /* - - - - - table general - - - - - */
 
+/* - - - - - ingredients table - - - - - */
+/* TODO import CSS from DTK list - think through */
 
 /* - - - - - traffic lights - - - - - */
 
 
-
 /* - - - - - nutrition table - - - - - */
+
+.nutrinfo-thick-line {
+    background-color:black;padding:0px;height:5px   
+}
+.nutrinfo-thin-line {
+    background-color:black;padding:0px;height:3px
+}
 /*table.nutrinfo, table.nutrinfo th.nutrinfo, td.nutrinfo {*/
-table.nutrinfo tr, table.nutrinfo td {
+table.nutrinfo-table tr, table.nutrinfo-table td {
     border: 1px solid black;
     text-align: left;
     border-collapse: collapse;
     padding-left: 3px;
     padding-right: 3px;
+}
+table.nutrinfo-table th {
+    font-weight: bold;
 }
 
 .nut_macro_cat {
@@ -134,13 +153,13 @@ table.nutrinfo tr, table.nutrinfo td {
 
 .nut_macro_sub_cat {
     position: relative;
-    left: 14px;
-    font-weight: normal;
-}
-
-/* set first colum width to accomodatet the offset */
-table.nutrinfo td:nth-child(1) {  
-    width: 134px;
+    left: 14px;                                             /* < TODO FIX hardcoded number hack add 14px to 120px*/
+    font-weight: normal;                                    /*  |  */
+}                                                           /*  |  */
+                                                            /*  |  */
+/* set first colum width to accomodatet the offset */       /*  |  */
+table.nutrinfo-table td:nth-child(1) {                      /*  |  */
+    width: 134px;                                           /*  < col width 120px but off set pushed text into next column */
 }
 
 

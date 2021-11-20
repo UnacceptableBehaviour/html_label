@@ -1,3 +1,4 @@
+//'use strict';
 
 // r  recipe
 // rc recipeCard
@@ -12,6 +13,15 @@ var rcp_salad = {"allergens": ["none_listed"], "atomic": false, "components": {}
 
 var rcps = [rcp_single,rcp_guinea_dinner,rcp_roast_bird,rcp_cherm,rcp_cc,rcp_salad];
 
+function addNetCarbs(r) {
+  r.nutrinfo.n_NtCa = String( (parseFloat(r.nutrinfo.n_Ca) - parseFloat(r.nutrinfo.n_Fb)).toFixed(2));
+}
+
+for (let rcp of rcps) {
+  console.log(`${rcp.nutrinfo.n_Ca} - ${rcp.nutrinfo.n_Fb} =`);
+  addNetCarbs(rcp);
+  console.log(rcp.nutrinfo.n_NtCa);
+}
 
 
 function addImage(rc, r) {
@@ -32,7 +42,7 @@ function addDescription(rc, r) {
  
 //  IGDT_TYPE: UNCHECKED / DERIVED / ATOMIC / OTS / DTK
 //                 -1         0        1       2     3
-let IGD_IDX_TYPE = 0
+let IGD_IDX_TYPE = 0;
 let IGD_IDX_QTY  = 1;
 let IGD_IDX_EACH = 2;
 let IGD_IDX_NAME = 3;
@@ -66,7 +76,7 @@ function addIngredients(rc, r){
     let innerHTML = '';
     innerHTML += '<td class="col-but-all text-center"><button class="btn btn-danger btn-sm delete" style="">X</button></td>';
     innerHTML += `<td class="col-but-qty text-center">${r.ingredients[i][IGD_IDX_QTY]}</td>`;
-    // TODO add if here to remove (0)
+
     let insert = '';
     if (r.ingredients[i][IGD_IDX_EACH] !== '(0)') {
       insert = r.ingredients[i][IGD_IDX_EACH];
@@ -74,8 +84,9 @@ function addIngredients(rc, r){
     innerHTML += `<td class="col-but-qty text-center">${insert}</td>`;
     innerHTML += `<td class="col-but-ingdt">${r.ingredients[i][IGD_IDX_NAME]}</td>`;
     innerHTML += '<td class="col-but-all"><button class="btn btn-secondary btn-sm snapshot float-right" style=""><img src="static/PNG/camera.png" alt="tick" srcset="images/camera.svg"></button></td>';
-    // TODO only present button when ingredient is derived
-    if (parseInt(r.ingredients[i][IGD_IDX_TYPE]) === 0) {
+
+    // TODO add recipe constuction callback to button - use gallery mechanism
+    if (parseInt(r.ingredients[i][IGD_IDX_TYPE]) === IGD_TYPE_DERIVED) {
       innerHTML += '<td class="col-but-all"><a class="btn btn-sm btn-outline-secondary float-right" href="#" role="button" style="">R</a></td>';  
     } else {
       innerHTML += '<td class="col-but-all"></td>';  
@@ -90,10 +101,46 @@ function addIngredients(rc, r){
   
   rc.appendChild(el);
 }
-  
+
+
+//<div class='rcp-method'>
+//  <div class='rcp-method-title'>Method</div>
+//  <table class='rcp-steps'>
+//    <tr><td>Boil kettle and pour 200ml boiling water into beaker w stock cube and dissolve it.</td></tr>
+//    <tr><td>Place the couscous in a suitable bowl (should be about an inch deep once stock and couscous mixed) and add the stock.</td></tr>
+//    <tr><td>Place a plate over the top an leave until required - at least 20mins.</td></tr>
+//    <tr><td>Chop the mint and dice the rest of the ingredients and mix everything together.</td></tr>
+//    <tr></tr>
+//    <tr></tr>
+//    
+//  </table>
+//</div>
+      
 function addMethod(rc, r){
   let el = document.createElement('div');
-  el.classList.add('rcp-');  
+  el.classList.add('rcp-method');
+
+  let elTitle = document.createElement('div');
+  elTitle.classList.add('rcp-method-title');
+  elTitle.textContent = 'Method';
+  el.appendChild(elTitle);
+  
+  // table for method steps
+  let elTable = document.createElement('table');
+  elTable.classList.add('rcp-steps');
+  
+  var lines = r.method.split('\n');
+  // list of ingredients
+  for (const i of lines) {
+    console.log(`HOW: ${i} <`);
+    // add each line of the method
+    let elMethodLine = document.createElement('tr');
+    elMethodLine.innerHTML = `<tr><td>${i}</td></tr>`;
+    
+    elTable.appendChild(elMethodLine);
+  }
+  
+  el.appendChild(elTable);
   
   rc.appendChild(el);
 }
@@ -111,9 +158,101 @@ function addRecipeTextSections(rc, r) {
   rc.appendChild(el);
 }
 
+
+//<div class='nutrinfo'>
+//  <table class='nutrinfo-table'>
+//    <tr><th colspan="2">Nutrition Info (per 100g)</th></tr>
+//    <tr><td colspan="2">__recipe_title__</td></tr>
+//    <tr><td colspan="2" class="nutrinfo-thick-line"></td></tr>
+//    <tr><td class="nut_macro_cat">Energy</td>               <td>100</td></tr>
+//    <tr><td colspan="2" style="background-color:black;padding:0px;height:3px"></td></tr>
+//    <tr><td class="nut_macro_cat">Fat</td>                  <td>3.81</td></tr>
+//    <tr><td class="nut_macro_sub_cat">Saturates</td>        <td>1.01</td></tr>
+//    <tr><td class="nut_macro_sub_cat">Mono-unsaturates</td> <td>1.2</td></tr>
+//    <tr><td class="nut_macro_sub_cat">Poly-unsaturates</td> <td>0.73</td></tr>
+//    <tr><td class="nut_macro_sub_cat">Omega 3 oil</td>      <td>0.18</td></tr>
+//    <tr><td class="nut_macro_cat">Carbohydrates</td>        <td>1.18</td></tr>
+//    <tr><td class="nut_macro_sub_cat">Sugars</td>           <td>0.46</td></tr>
+//    <tr><td class="nut_macro_cat">Starch</td>               <td>0.01</td></tr>
+//    <tr><td class="nut_macro_cat">Fibre</td>                <td>0.01</td></tr>
+//    <tr><td class="nut_macro_cat">Protein</td>              <td>14.15</td></tr>
+//    <tr><td class="nut_macro_cat">Salt</td>                 <td>1.1</td></tr>
+//    <tr><td colspan="2" style="background-color:black;padding:0px;height:3px"></td></tr>
+//    <tr><td class="nut_macro_cat">Net Carbs              </td><td>0.01</td></tr>
+//    <tr><td class="nut_macro_cat">Alcohol               </td><td>1.1</td></tr>
+//  </table>
+//</div>
+
+// var _col_span_ 2 or 3
+var nutriLut = {
+  /*'serving_size': '<tr></th>Nutrition Info</th></th>/100g</th></th>/_serving_size_</th></tr>',*/
+  'serving_size': '<tr><th colspan="2">Nutrition Info (per 100g) <br> Serving:_serving_size_g</th></tr>',
+  //'recipe_title': '<tr><td colspan="2">_recipe_title_</td></tr>',
+  'bar_1': '<tr><td colspan="2" class="nutrinfo-thick-line"></td></tr>',
+  'n_En': '<tr><td class="nut_macro_cat">Energy</td><td>_n_En_</td></tr>',                /* Energy in kcal x by 4.184 for (kJ) */
+  'bar_2': '<tr><td colspan="2" class="nutrinfo-thin-line"></td></tr>',
+  'n_Fa': '<tr><td class="nut_macro_cat">Fat</td><td>_n_Fa_</td></tr>',                   /* Fat */
+  'n_Fs': '<tr><td class="nut_macro_sub_cat">Saturates</td><td>_n_Fs_</td></tr>',         /* Fat - saturated */
+  'n_Fm': '<tr><td class="nut_macro_sub_cat">Mono-unsaturates</td><td>_n_Fm_</td></tr>',  /* Fat - mono-unsaturates */
+  'n_Fp': '<tr><td class="nut_macro_sub_cat">Poly-unsaturates</td><td>_n_Fp_</td></tr>',  /* Fat - poly-unsaturates */
+  'n_Fo3': '<tr><td class="nut_macro_sub_cat">Omega 3 oil</td><td>0.18</td></tr>',        /* Fat - omega_3 */
+  'n_Ca': '<tr><td class="nut_macro_cat">Carbohydrates</td><td>_n_Ca_</td></tr>',         /* Carbohydrate */
+  'n_Su': '<tr><td class="nut_macro_sub_cat">Sugars</td><td>_n_Su_</td></tr>',            /* of which is sugar */
+  'n_St': '<tr><td class="nut_macro_cat">Starch</td><td>_n_St_</td></tr>',                /* Starch */
+  'n_Fb': '<tr><td class="nut_macro_cat">Fibre</td><td>_n_Fb_</td></tr>',                 /* Fibre */
+  'n_Pr': '<tr><td class="nut_macro_cat">Protein</td><td>_n_Pr_</td></tr>',               /* Protein */
+  'n_Sa': '<tr><td class="nut_macro_cat">Salt</td><td>_n_Sa_</td></tr>',                  /* Salt */
+  'bar_3': '<tr><td colspan="2" class="nutrinfo-thin-line"></td></tr>',
+  'n_NtCa': '<tr><td class="nut_macro_cat">Net Carbs</td><td>_n_NtCa_</td></tr>',         /* Net Carb */
+  'n_Al': '<tr><td class="nut_macro_cat">Alcohol</td><td>_n_Al_</td></tr>',               /* Alcohol */
+  //'servings': 1.0,
+  //'units': 'g',
+  //'yield': 2280.0,
+  //'density': 1,  
+}
+//'n_En': 151.0,      /* energy in kcal x by 4.184 for (kJ) */
+//'n_Fa': 6.55,       /* Fat */
+//'n_Fs': 1.3,        /* Fat - saturated */
+//'n_Fm': 3.5,        /* Fat - mono-unsaturates */
+//'n_Fp': 1.08,       /* Fat - poly-unsaturates */
+//'n_Fo3': 0.65,      /* Fat - omega_3 */
+//'n_Ca': 11.89,      /* Carbohydrate */
+//'n_Su': 6.03,       /* of which is sugar */
+//'n_St': 1.37,       /* Starch */
+//'n_Fb': 1.42,       /* Fibre */
+//'n_Pr': 11.62,      /* Protein */
+//'n_Sa': 0.5,        /* Salt */
+//'n_NtCa':           /* Net Carb = Total Carb - Fibre*/
+//'n_Al': 0.0,        /* Alcohol */
+//'serving_size': 2280.0,
+//'servings': 1.0,
+//'units': 'g',
+//'yield': 2280.0,
+//'density': 1,  
 function addNutrition(rc, r){
   let el = document.createElement('div');
-  el.classList.add('rcp-');  
+  el.classList.add('nutrinfo');
+
+  let elTable = document.createElement('table');
+  elTable.classList.add('nutrinfo-table');
+
+  //let elMethodLine = document.createElement('tr');
+  //elMethodLine.innerHTML = nutriLut.serving_size;
+  //elTable.appendChild(elMethodLine);
+  
+  for (const [k, v] of Object.entries(nutriLut)) {
+    console.log(`N_INF: ${k} - ${v} <`);
+    // add each line of the method
+    let elMethodLine = document.createElement('tr');
+    
+    let html_with_vals = String(v).replace(`_${k}_`, r.nutrinfo[k]);
+    
+    elMethodLine.innerHTML = html_with_vals;
+    
+    elTable.appendChild(elMethodLine);
+  }
+  
+  el.appendChild(elTable);
   
   rc.appendChild(el);
 }
