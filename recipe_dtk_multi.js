@@ -14,25 +14,137 @@ var rcps = [rcp_single,rcp_guinea_dinner,rcp_roast_bird,rcp_cherm,rcp_cc,rcp_sal
 
 
 
-function createImage(rc, r) {
-  let rcpImg = document.createElement('img');
-  rcpImg.classList.add('rcp-image');
-  rcpImg.src = `images/${r.lead_image}`;
+function addImage(rc, r) {
+  let el = document.createElement('img');
+  el.classList.add('rcp-image');
+  el.src = `images/${r.lead_image}`;
   
-  rc.appendChild(rcpImg);
+  rc.appendChild(el);
 }
+
+function addDescription(rc, r) {
+  let el = document.createElement('div');
+  el.classList.add('rcp-desc');
+  el.textContent = r.description;
+  
+  rc.appendChild(el);
+}
+ 
+//  IGDT_TYPE: UNCHECKED / DERIVED / ATOMIC / OTS / DTK
+//                 -1         0        1       2     3
+let IGD_IDX_TYPE = 0
+let IGD_IDX_QTY  = 1;
+let IGD_IDX_EACH = 2;
+let IGD_IDX_NAME = 3;
+
+let IGD_TYPE_UNCHECKED = -1;
+let IGD_TYPE_DERIVED   = 0;
+let IGD_TYPE_ATOMIC    = 1;
+let IGD_TYPE_OTS       = 2;   // Off The Shelf
+let IGD_TYPE_DTK       = 3;   // Daily TracKer 
+
+function addIngredients(rc, r){
+  let el = document.createElement('div');
+  el.classList.add('rcp-igds-list');
+  
+  // title - makes: Xg - Served: N
+  let elTitle = document.createElement('div');
+  elTitle.classList.add('rcp-igds');
+  let innerHTML = `<span>Ingredients</span><span>Makes: ${r.nutrinfo.yield}${r.nutrinfo.units} - Serves: ${r.nutrinfo.servings}</span>`;
+  elTitle.innerHTML = innerHTML;
+  el.appendChild(elTitle);
+  
+  // table for ingredients
+  let elTable = document.createElement('table');
+  elTable.classList.add('rcp-tab-igds');
+  
+  // list of ingredients
+  for (let i in r.ingredients) {
+    console.log(`IGD: ${i} - ${r.ingredients[i][IGD_IDX_TYPE]} - ${r.ingredients[i][IGD_IDX_QTY]} - ${r.ingredients[i][IGD_IDX_EACH]} - ${r.ingredients[i][IGD_IDX_NAME]} <`);
+    // contsturct html for each ingredient line
+    let elIgdLine = document.createElement('tr');
+    let innerHTML = '';
+    innerHTML += '<td class="col-but-all text-center"><button class="btn btn-danger btn-sm delete" style="">X</button></td>';
+    innerHTML += `<td class="col-but-qty text-center">${r.ingredients[i][IGD_IDX_QTY]}</td>`;
+    // TODO add if here to remove (0)
+    let insert = '';
+    if (r.ingredients[i][IGD_IDX_EACH] !== '(0)') {
+      insert = r.ingredients[i][IGD_IDX_EACH];
+    }
+    innerHTML += `<td class="col-but-qty text-center">${insert}</td>`;
+    innerHTML += `<td class="col-but-ingdt">${r.ingredients[i][IGD_IDX_NAME]}</td>`;
+    innerHTML += '<td class="col-but-all"><button class="btn btn-secondary btn-sm snapshot float-right" style=""><img src="static/PNG/camera.png" alt="tick" srcset="images/camera.svg"></button></td>';
+    // TODO only present button when ingredient is derived
+    if (parseInt(r.ingredients[i][IGD_IDX_TYPE]) === 0) {
+      innerHTML += '<td class="col-but-all"><a class="btn btn-sm btn-outline-secondary float-right" href="#" role="button" style="">R</a></td>';  
+    } else {
+      innerHTML += '<td class="col-but-all"></td>';  
+    }
+    
+    elIgdLine.innerHTML = innerHTML;
+    
+    elTable.appendChild(elIgdLine)
+  }
+  
+  el.appendChild(elTable);
+  
+  rc.appendChild(el);
+}
+  
+function addMethod(rc, r){
+  let el = document.createElement('div');
+  el.classList.add('rcp-');  
+  
+  rc.appendChild(el);
+}
+ 
+function addRecipeTextSections(rc, r) {
+  let el = document.createElement('div');
+  el.classList.add('rcp-card-txt');
+  
+  addDescription(el, r);
+  
+  addIngredients(el, r);
+  
+  addMethod(el, r);
+  
+  rc.appendChild(el);
+}
+
+function addNutrition(rc, r){
+  let el = document.createElement('div');
+  el.classList.add('rcp-');  
+  
+  rc.appendChild(el);
+}
+
+//function addItem(rc, r) {
+//  let el = document.createElement('');
+//  el.classList.add('rcp-');  
+//  
+//  rc.appendChild(el);
+//}
 
 function createRecipeCard(r) {
   let recipeCard = document.createElement('div');
   recipeCard.classList.add('rcp-card');
   
-  createImage(recipeCard, r);
+  addImage(recipeCard, r);
+  
+  addRecipeTextSections(recipeCard, r);
+  
+  addNutrition(recipeCard, r);
 
   return recipeCard;
 }
 
-var rc = createRecipeCard(rcp_guinea_dinner);
 
 
-
-window.addEventListener('load', f => {document.body.appendChild(rc);});
+window.addEventListener('load', f => {
+  console.log('window: Loaded');
+  //let rc = createRecipeCard(rcp_guinea_dinner);
+  let rc = createRecipeCard(rcp_roast_bird);
+  console.log(rc);
+  document.body.appendChild(rc);
+  console.log('complete');
+});

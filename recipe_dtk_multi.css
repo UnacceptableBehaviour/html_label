@@ -69,6 +69,10 @@ p {
 .r-just {
     text-align:right;    
 }
+.c-just {
+    text-align:center;    
+}
+
 
 .rcp-igds {
     display: flex;
@@ -88,22 +92,23 @@ p {
 }
 
 
-.rcp-title, .rcp-desc, .rcp-igds, .rcp-makes, .rcp-method {
+.rcp-title, .rcp-desc, .rcp-igds, .rcp-makes, .rcp-method, .rcp-steps {
     font-weight: bold;
     font-size: 14px;
     margin: 0px;
     border: 1px;
-    padding: 15px 1px 1px 1px;
+    padding: 15px 1px 1px 1px;   
 }
 
+.rcp-desc {
+    text-align:center;
+}
 .rcp-steps {
     font-weight: normal;
-    font-size: 14px;
-    margin: 0px;
-    border: 1px;
     padding: 1px 1px 1px 1px;
     width: 100%;
 }
+
 
 /* - - - - - table general - - - - - */
 
