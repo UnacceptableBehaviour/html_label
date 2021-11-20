@@ -409,4 +409,7 @@ for rcp in rcps:
     
 print(json_format_rcps)
 
+print('\n\n\n')
+for rcp in rcps:
+    print(f"'{rcp['ri_name']}': '{rcp['ri_id']}',")
 
