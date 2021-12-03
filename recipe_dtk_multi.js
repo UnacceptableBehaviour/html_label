@@ -90,7 +90,7 @@ function addIngredients(rc, r){
   let el = document.createElement('div');
   el.classList.add('rcp-igds-list');
   
-  // title - makes: Xg - Served: N
+  // title - makes: Xg - Serves: N
   let elTitle = document.createElement('div');
   elTitle.classList.add('rcp-igds');
   let innerHTML = `<span>Ingredients</span><span>Makes: ${r.nutrinfo.yield}${r.nutrinfo.units} - Serves: ${r.nutrinfo.servings}</span>`;
@@ -118,7 +118,6 @@ function addIngredients(rc, r){
     innerHTML += `<td class="col-but-ingdt">${r.ingredients[i][IGD_IDX_NAME]}</td>`;
     innerHTML += '<td class="col-but-all"><button class="btn btn-secondary btn-sm snapshot float-right" style=""><img src="static/PNG/camera.png" alt="tick" srcset="images/camera.svg"></button></td>';
 
-    // TODO add recipe constuction callback to button - use gallery mechanism
     if (parseInt(r.ingredients[i][IGD_IDX_TYPE]) === IGD_TYPE_DERIVED) {
       innerHTML += `<td class="col-but-all"><a class="rcp-r btn btn-sm btn-outline-secondary float-right" href="#" role="button" style="" value="${r.ingredients[i][IGD_IDX_NAME]}">R</a></td>`;
       // call createRecipeCard(ri_id_lookup[ri_id])
@@ -138,27 +137,7 @@ function addIngredients(rc, r){
       let rButton = elIgdLine.getElementsByClassName('rcp-r')[0]; // return 1st item in collection
       console.log(rButton);
       
-      rButton.addEventListener('click', (event) => {
-        //console.log(`r Button CLICK ${event.target.value} ${event}`);
-        //console.log(event);
-        //console.log(event.target);
-        //console.log(event.target.getAttribute('value'));
-        let subcomponentName = event.target.getAttribute('value');
-        //console.log(subcomponentName);
-        console.log(idFromName(subcomponentName));
-        
-        let recipeCard = document.getElementById(idFromName(subcomponentName));
-        console.log(recipeCard);
-        if (recipeCard === null) {
-          console.log(`Creating recipeCard: ID: ${idFromName(subcomponentName)}`);
-          document.body.appendChild(createRecipeCard(recipeObjectFromName(subcomponentName)));
-          document.getElementById(idFromName(subcomponentName)).scrollIntoView({ behavior: 'smooth' });
-        } else {
-          console.log(`Found recipeCard: ID: ${idFromName(subcomponentName)}`);
-          console.log(recipeCard);
-          recipeCard.scrollIntoView({ behavior: 'smooth' });
-        }        
-      });
+      rButton.addEventListener('click', expandIngredientToRecipeCard );  // TODO mayber better to add listenner to parent list then fire on target parent?
     }
     
     elTable.appendChild(elIgdLine);
@@ -167,6 +146,30 @@ function addIngredients(rc, r){
   el.appendChild(elTable);
   
   rc.appendChild(el);
+}
+
+// ingredient R button click handler - add ingredient recipe to display.
+function expandIngredientToRecipeCard(event) {
+  console.log(`R Button CLICK <EXPAND> ${event.target.value} ${event}`);
+  console.log(event);
+  console.log(event.target);
+  console.log(event.target.getAttribute('value'));
+  
+  let subcomponentName = event.target.getAttribute('value');
+  //console.log(subcomponentName);
+  console.log(idFromName(subcomponentName));
+  
+  let recipeCard = document.getElementById(idFromName(subcomponentName));
+  console.log(recipeCard);
+  if (recipeCard === null) {
+    console.log(`Creating recipeCard: ID: ${idFromName(subcomponentName)}`);
+    document.body.appendChild(createRecipeCard(recipeObjectFromName(subcomponentName)));
+    document.getElementById(idFromName(subcomponentName)).scrollIntoView({ behavior: 'smooth' });
+  } else {
+    console.log(`Found recipeCard: ID: ${idFromName(subcomponentName)}`);
+    console.log(recipeCard);
+    recipeCard.scrollIntoView({ behavior: 'smooth' });
+  }        
 }
 
 
@@ -263,7 +266,8 @@ var nutriLut = {
   //'units': 'g',
   //'yield': 2280.0,
   //'density': 1,  
-} 
+};
+
 function addNutrition(rc, r){
   let el = document.createElement('div');
   el.classList.add('nutrinfo');
@@ -322,8 +326,8 @@ window.addEventListener('load', f => {
   console.log('window: Loaded');
 
   let rc = createRecipeCard(rcp_single);
-  console.log(rc);
-  document.body.appendChild(rc);
+  //console.log(rc);
+  //document.body.appendChild(rc);
   
   
   rc = createRecipeCard(rcp_guinea_dinner);
