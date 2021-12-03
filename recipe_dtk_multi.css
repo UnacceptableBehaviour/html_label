@@ -97,16 +97,21 @@ hr {
 }
 
 /* - - - - - headings - - - - - */
-.rcp-title, .rcp-desc, .rcp-igds, .rcp-makes, .rcp-method, .rcp-method-title, .rcp-steps {
+.rcp-title, .rcp-name, .rcp-desc, .rcp-igds, .rcp-makes, .rcp-method, .rcp-method-title, .rcp-steps {
     font-weight: bold;
     font-size: 14px;
     margin: 0px;
     border: 1px;
-    padding: 15px 1px 1px 1px;   
+    padding: 15px 1px 1px 1px;
 }
 /* - - - - - specialisations of above */
-.rcp-desc {
+.rcp-name, .rcp-desc {
     text-align:center;
+}
+.rcp-desc {
+    font-style: italic;
+    font-weight: normal;
+    padding: 5px 1px 1px 1px;    
 }
 .rcp-method-title {
     padding: 1px 1px 1px 1px;    

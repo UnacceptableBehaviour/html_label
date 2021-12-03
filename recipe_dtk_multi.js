@@ -65,12 +65,22 @@ function addImage(rc, r) {
   rc.appendChild(el);
 }
 
-function addDescription(rc, r) {
-  let el = document.createElement('div');
-  el.classList.add('rcp-desc');
-  el.textContent = r.description;
+// add Name (for DTK) if different to description
+function addNameAndDescription(rc, r) {
   
-  rc.appendChild(el);
+  // we always want a name
+  let elName = document.createElement('div');
+  elName.classList.add('rcp-name');
+  elName.textContent = r.ri_name;
+  rc.appendChild(elName);
+  
+  if (r.ri_name !== r.description) {
+    let el = document.createElement('div');
+    el.classList.add('rcp-desc');
+    el.textContent = r.description;  
+    rc.appendChild(el);
+  }
+  
 }
  
 //  IGDT_TYPE: UNCHECKED / DERIVED / ATOMIC / OTS / DTK
@@ -149,27 +159,33 @@ function addIngredients(rc, r){
 }
 
 // ingredient R button click handler - add ingredient recipe to display.
+// https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scrolling_performance_with_passive_listeners
 function expandIngredientToRecipeCard(event) {
-  console.log(`R Button CLICK <EXPAND> ${event.target.value} ${event}`);
-  console.log(event);
-  console.log(event.target);
-  console.log(event.target.getAttribute('value'));
-  
   let subcomponentName = event.target.getAttribute('value');
-  //console.log(subcomponentName);
-  console.log(idFromName(subcomponentName));
+  let elementId = idFromName(subcomponentName);
+  let recipeCard = document.getElementById(elementId);
   
-  let recipeCard = document.getElementById(idFromName(subcomponentName));
+  console.log(`R Button CLICK <EXPAND> ${event.type} ${subcomponentName} - - - - - S`);
+  console.log(elementId);
   console.log(recipeCard);
+  
   if (recipeCard === null) {
-    console.log(`Creating recipeCard: ID: ${idFromName(subcomponentName)}`);
-    document.body.appendChild(createRecipeCard(recipeObjectFromName(subcomponentName)));
-    document.getElementById(idFromName(subcomponentName)).scrollIntoView({ behavior: 'smooth' });
+    console.log(`Creating recipeCard: ID: ${elementId}`);    
+    let recipeCardElement = createRecipeCard(recipeObjectFromName(subcomponentName));    
+    document.body.appendChild(recipeCardElement);    
   } else {
-    console.log(`Found recipeCard: ID: ${idFromName(subcomponentName)}`);
-    console.log(recipeCard);
-    recipeCard.scrollIntoView({ behavior: 'smooth' });
-  }        
+    console.log(`Found recipeCard: ID: ${elementId}`);
+  }
+  
+  // this doesn't work - as soon as exec leaves the context of this call - page goes to top of screen!?
+  //document.getElementById(elementId).scrollIntoView({ behavior: 'smooth' });
+
+  // used a timer to put it in timer queue
+  //const scrollToCard = id => { console.log(`scrollToCard: ${id}`); };   
+  const scrollToCard = id => { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); };
+  setTimeout( scrollToCard , 1, elementId);  // 1ms
+  
+  console.log(`R Button CLICK <EXPAND> ${event.type} ${event.target.getAttribute('value')} - - - - - E`);
 }
 
 
@@ -219,7 +235,7 @@ function addRecipeTextSections(rc, r) {
   let el = document.createElement('div');
   el.classList.add('rcp-card-txt');
   
-  addDescription(el, r);
+  addNameAndDescription(el, r);
   
   addIngredients(el, r);
   
