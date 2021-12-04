@@ -56,6 +56,13 @@ hr {
     margin-right: 10px;  
 }
 
+.rcp-image-nav {
+    width: 100%;
+    height: auto;
+    border: 5px;
+    border-color: pink;
+    position: relative;
+}
 .rcp-image {
     display: block;
     width: 90%;
@@ -63,6 +70,27 @@ hr {
     margin-right: auto;
     border-radius: 6px;
 }
+/* READ */
+/* https://scotch.io/bar-talk/5-things-you-might-not-know-about-the-css-positioning-types */
+.rbut-bk, .rbut-x {
+    position: absolute;
+    text-align: center;
+    top: 4%;
+    opacity: 0.75;    
+}
+.rbut-x {
+    /*right: 10px;*/
+    right: 8%;
+}
+.rbut-bk {
+    /*left: 10px;*/
+    left: 8%;
+}
+.rbut-bk:hover .rbut-x:hover {
+  background-color: grey;
+  opacity: 1;
+}
+
 
 .rcp-igds-list{
     
