@@ -3,40 +3,40 @@
 <script>
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
-  
+
   /*loop through a collection of all HTML elements:*/
   z = document.getElementsByTagName("*");
-  
+
   for (i = 0; i < z.length; i++) {
     elmnt = z[i];
     /*search for elements with a certain atrribute:*/
-  
+
     file = elmnt.getAttribute("w3-include-html");
-  
+
     if (file) {
       /*make an HTTP request using the attribute value as the file name:*/
       xhttp = new XMLHttpRequest();
-  
+
       xhttp.onreadystatechange = function() {
-        
+
         if (this.readyState == 4) {
-  
+
           if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-  
+
           if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-  
+
           /*remove the attribute, and call this function once more:*/
           elmnt.removeAttribute("w3-include-html");
-  
+
           includeHTML();
-  
+
         }
-      }      
-  
+      }
+
       xhttp.open("GET", file, true);
-  
+
       xhttp.send();
-  
+
       /*exit the function:*/
       return;
     }
@@ -45,33 +45,50 @@ function includeHTML() {
 </script>
 
 <body>
-
+Fire up asset server to load recipes
 <table>
+  <!--https://www.jotform.com/blog/html5-imports-import-html-files-into-html-files-83467/-->
+  <!--<link href="extern.html" rel="import" />-->
   <tr>
-    <td><div w3-include-html="http://192.168.0.8:8000/recipe_page.html"></div></td>
-    <td><div w3-include-html="http://192.168.0.8:8000/recipe_page.html"></div></td>
+    <td><link href="recipe_page.html" rel="import" /></td>
+    <td><link href="recipe_page.html" rel="import" /></td>
+  </tr>
+  <tr>
+    <td><div w3-include-html="https://192.168.1.13:8080/tp/recipe_page.html"></div></td>
+    <td><div w3-include-html="https://192.168.1.13:8080/tp/recipe_page.html"></div></td>
+  </tr>
+  <tr>
+    <td><div w3-include-html="https://localhost:8080/tp/recipe_page.html"></div></td>
+    <td><div w3-include-html="https://localhost:8080/tp/recipe_page.html"></div></td>
   </tr>
 
   <tr>
     <td>Prawn</td>
     <td>Crab</td>
+    <!--from-->
+    <!--https://www.w3schools.com/howto/howto_html_include.asp-->
     <!--<td><div w3-include-html='recipe_page.html'></div></td> <!-- works in seamonkey 2.49.1 NOT chrome -->
     <!--<td><div w3-include-html='recipe_page.html'></div></td> <!-- works in seamonkey 2.49.1 NOT chrome -->
+    <td><div w3-include-html='recipe_page.html'></div></td>
+    <td><div w3-include-html='recipe_page.html'></div></td>
+    <!--try-->
+    <!--https://www.cssscript.com/include-html-alt-iframe/-->
+    <!--https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file-->
   </tr>
-    
+
   <tr>
-    <td><div w3-include-html="http://localhost:8000/recipe_page.html"></div></td>
-    <td><div w3-include-html="http://localhost:8000/recipe_page.html"></div></td>
+    <td><div w3-include-html="http://localhost:8080/tp/recipe_page.html"></div></td>
+    <td><div w3-include-html="http://localhost:8080/tp/recipe_page.html"></div></td>
   </tr>
   <!-- https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally -->
   <!-- cd into directory to be served -->
-  <!-- and start a web server -->  
+  <!-- and start a web server -->
   <!-- ruby -r webrick -e "s = WEBrick::HTTPServer.new(:Port => 8000, :DocumentRoot => Dir.pwd); trap('INT') { s.shutdown }; s.start" -->
   <!-- or python3 -m http.server -->
   <!-- then files will be served from -->
   <!-- http://127.0.0.1:8000/recipe_page.html  <!-- run
   <!-- http://localhost:8000/recipe_page.html  <!-- run
-  
+
   <!-- -->
   <!-- -->
   <!-- -->
